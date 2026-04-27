@@ -19,10 +19,6 @@ Autentica un usuario y retorna los tokens de acceso y refresco.
 
 **Body de la peticion:**
 ```json
-{
-    "username": "usuario@empresa.com",
-    "password": "contraseña123"
-}
 ```
 
 **Respuesta exitosa (200):**

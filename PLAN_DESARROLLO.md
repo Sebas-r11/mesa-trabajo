@@ -7,8 +7,10 @@
 - **Backend**: Django + Django REST Framework
 - **Autenticación**: JWT (Simple JWT)
 - **Base de datos**: PostgreSQL (o SQLite para desarrollo)
-- **Frontend**: HTML/CSS/JS simple con Bootstrap (sin React para simplificar)
-- **Tiempo real**: Polling AJAX simple (sin WebSockets)
+- **Frontend**: Next.js 14+ (App Router) + TypeScript + Tailwind CSS + shadcn/ui
+- **HTTP Client**: Axios + TanStack Query (React Query) para caché y sincronización
+- **Gráficas**: Recharts
+- **Tiempo real**: Polling con React Query (sin WebSockets por ahora)
 - **IoT**: Funcionalidad preparada pero no implementada (marcada como "próximamente")
 
 ---
@@ -71,11 +73,11 @@ Permitir configurar máquinas, operarios, habilidades y unidades de medida.
    - CRUD de Unidades de Eficiencia
    - Asignación de habilidades a operarios
 
-3. **Interfaz Web Básica**
-   - Dashboard de administración simple
-   - Formularios para gestión de máquinas
-   - Formularios para gestión de operarios
-   - Vista de habilidades por operario
+3. **Interfaz Next.js - Módulo de Configuración**
+   - Páginas para gestión de máquinas (list/create/edit)
+   - Páginas para gestión de operarios
+   - Página de habilidades por operario
+   - Componentes de formulario con validación (React Hook Form + Zod)
 
 4. **Validaciones**
    - Validar que operario tenga habilidad para máquina
@@ -84,7 +86,7 @@ Permitir configurar máquinas, operarios, habilidades y unidades de medida.
 
 ### Entregables
 - API REST completa de configuración
-- Interfaz web básica funcional
+- Interfaz Next.js funcional para configuración
 - Validaciones implementadas
 - Documentación de API (Swagger/OpenAPI)
 
@@ -279,7 +281,7 @@ Crear visualizaciones claras para cada rol con métricas clave.
    - Reporte de incidencias
    - Exportar a Excel (CSV)
 
-5. **Gráficas con Chart.js**
+5. **Gráficas con Recharts**
    - Gráfica de barras: eficiencia por operario
    - Gráfica de línea: tendencia de eficiencia
    - Gráfica de pastel: distribución de incidencias
@@ -461,10 +463,12 @@ Semanas 19-20: [████████] Despliegue y Prep IoT
 - **PostgreSQL** (producción) / SQLite (desarrollo)
 
 ### Frontend
-- **HTML5 + CSS3 + JavaScript**
-- **Bootstrap 5** (diseño responsivo)
-- **Chart.js** (gráficas)
-- **Fetch API** (llamadas AJAX)
+- **Next.js 14+** (App Router, TypeScript)
+- **Tailwind CSS** (diseño responsivo)
+- **shadcn/ui** (componentes de UI)
+- **Recharts** (gráficas)
+- **Axios + TanStack Query** (fetching y caché)
+- **React Hook Form + Zod** (formularios y validación)
 
 ### Herramientas
 - **Git** (control de versiones)
@@ -475,7 +479,7 @@ Semanas 19-20: [████████] Despliegue y Prep IoT
 ### Futuro (no en MVP)
 - **Redis** (caché)
 - **Mosquitto MQTT** (IoT)
-- **React** (migración de frontend)
+- **WebSockets** (tiempo real nativo)
 - **TensorFlow** (ML predictivo)
 
 ---
@@ -483,11 +487,11 @@ Semanas 19-20: [████████] Despliegue y Prep IoT
 ## Notas Importantes
 
 ### Simplificaciones Educativas
-1. **Sin WebSockets**: Usaremos polling AJAX simple cada 10-30 segundos
+1. **Sin WebSockets**: Usaremos polling con React Query (refetchInterval) cada 10-30 seg
 2. **Sin IoT real**: Modelos preparados pero no implementados
 3. **Un solo cliente**: No multitenancy activo (pero preparado en modelos)
 4. **Reglas simples**: Evaluación básica con Python, no motor complejo
-5. **Frontend simple**: HTML/Bootstrap, sin SPA complejo
+5. **Frontend Next.js**: App Router, SSR/CSR según la página
 
 ### Buenas Prácticas Incluidas
 - Separación de concerns (models, views, serializers, services)
